@@ -31,6 +31,11 @@ const optionList = [
         description: '☞ Grab only first level of tree structure'
     },
     {
+        name: 'attributes',
+        type: String,
+        description: 'ℹ️ Grab file attributes. Ex --attributes size,type,extension'
+    },
+    {
         name: 'pretty',
         type: Boolean,
         description: '💎 Json pretty print'
@@ -69,16 +74,21 @@ if (Object.keys(options).length === 0 || options.help || !options.path) {
 }
 
 if (!fs.existsSync(options.path)) {
-    console.log('------------------------------------------------------------')
+    console.log('-----------------------------------------------------------------------------------------------------')
     console.log(`Folder \"${options.path}\" doesn\'t exist please check your args`);
-    console.log('------------------------------------------------------------')
+    console.log('-----------------------------------------------------------------------------------------------------')
     console.log(usage)
     return;
+}
+
+if (options.firstLevel && options.attributes.indexOf('size') !== -1) {
+    console.log('WARNING: due to firstLevel option enabled, size will be shown only for files');
 }
 
 const result = directoryTree(options.path, {
     firstLevel: options.firstLevel,
     exclude: options.exclude ? [new RegExp(options.exclude)] : undefined,
+    attributes: options.attributes ? options.attributes.split(',') : undefined
 })
 
 const resultString = JSON.stringify(result, null, options.pretty ? '  ' : '');
