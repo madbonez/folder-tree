@@ -75,7 +75,7 @@ if (Object.keys(options).length === 0 || options.help || !options.path) {
 
 if (!fs.existsSync(options.path)) {
     console.log('-----------------------------------------------------------------------------------------------------')
-    console.log(`Folder \"${options.path}\" doesn\'t exist please check your args`);
+    console.log(`ERROR: Folder \"${options.path}\" doesn\'t exist please check your args`);
     console.log('-----------------------------------------------------------------------------------------------------')
     console.log(usage)
     return;
