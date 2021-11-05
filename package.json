@@ -1,0 +1,22 @@
+{
+  "name": "folder-tree",
+  "version": "1.0.0",
+  "bin": "bin/index.js",
+  "main": "lib/directory-tree.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "amalovmail",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "command-line-args": "^5.2.0",
+    "command-line-usage": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "chai": "^2.3.0",
+    "mocha": "^8.3.2"
+  }
+}
